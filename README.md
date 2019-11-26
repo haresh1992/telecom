@@ -35,6 +35,8 @@ API-DOCS
  - Create Schema name as 'testdemo'
 
  - Url = jdbc:mysql://localhost:3306/testdemo?useSSL=false
+ 
+ - Update Username and Password as per your local mysql credentials
 
 **Points Taken Care**
 
