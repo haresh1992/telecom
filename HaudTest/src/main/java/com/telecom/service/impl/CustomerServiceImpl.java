@@ -30,6 +30,11 @@ public class CustomerServiceImpl implements ICustomerService {
     private ISimCardRepository simCardRepository;
 
 
+    /**
+     * This method is used to save Customer
+     * @param customerRequest
+     * @return CustomerDTO
+     */
     @Override
     public CustomerDTO createCustomer(CustomerRequest customerRequest) {
 
@@ -40,10 +45,10 @@ public class CustomerServiceImpl implements ICustomerService {
         try {
 
             Customer customer = CustomerMapper.toCustomer(customerRequest);
-
             customer.setCreatedBy(customerRequest.getLoginUserName());
-
             customer = customerRepository.save(customer);
+
+            logger.info("Customer Created.");
 
             customerDTO = CustomerMapper.toCustomerDTO(customer);
 
@@ -56,6 +61,12 @@ public class CustomerServiceImpl implements ICustomerService {
         return customerDTO;
     }
 
+    /**
+     * This API is used to Link Simcard to Customer
+     * @param updateCustomerRequest
+     * @return CustomerDTO
+     * @throws Exception
+     */
     @Override
     public CustomerDTO linkSimCardToCustomer(UpdateCustomerRequest updateCustomerRequest) throws Exception {
 
@@ -72,11 +83,11 @@ public class CustomerServiceImpl implements ICustomerService {
                 Customer customer = optionalCustomer.get();
 
                 List<SimCard> simCardList = simCardRepository.findAllById(updateCustomerRequest.getSimcardId());
-
                 customer.setSimCards(simCardList);
                 customer.setUpdatedBy(updateCustomerRequest.getLoginUserName());
-
                 customer = customerRepository.save(customer);
+
+                logger.info("Simcard link to the Customer.");
 
                 customerDTO = CustomerMapper.toCustomerDTO(customer);
 
@@ -92,6 +103,12 @@ public class CustomerServiceImpl implements ICustomerService {
         }
     }
 
+    /**
+     * This API is used to Get Customer Info from DB
+     * @param customerId
+     * @return CustomerDTO
+     * @throws Exception
+     */
     @Override
     public CustomerDTO getCustomerInfo(long customerId) throws Exception {
 
@@ -107,6 +124,8 @@ public class CustomerServiceImpl implements ICustomerService {
                 customerDTO = CustomerMapper.toCustomerDTO(optionalCustomer.get());
             else
                 throw new Exception("Customer doesn't exist");
+
+            logger.info("Customer Details Retrieved.");
 
         } catch (Exception ex) {
 

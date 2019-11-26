@@ -31,13 +31,11 @@ public class SimCardController extends ExternalBaseController {
     @Autowired
     private ISimCardService simCardService;
 
-    @RequestMapping(value = "/healthCheck")
-    public String healthCheck() {
-        logger.info("SimCard Controller");
-
-        return "SimCard Controller Response";
-    }
-
+    /**
+     * This API is used to Create SimCard
+     * @param simCardRequest
+     * @return SimCardResponse Object
+     */
     @PostMapping
     public ResponseEntity createSimCard(@Valid @RequestBody SimCardRequest simCardRequest) {
 
@@ -50,8 +48,6 @@ public class SimCardController extends ExternalBaseController {
             SimCardDTO simCardDTO = simCardService.createSimCard(simCardRequest);
 
             SimCardResponse simCardResponse = SimCardMapper.toSimCardResponse(simCardDTO);
-
-            logger.info("SimCard added.");
 
             HeadersHandler.parseHeadersOnSuccess(headers, "SimCard added.", "SimCard added Successfully.");
 

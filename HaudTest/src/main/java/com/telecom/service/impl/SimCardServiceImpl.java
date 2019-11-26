@@ -19,6 +19,11 @@ public class SimCardServiceImpl implements ISimCardService {
     @Autowired
     private ISimCardRepository simCardRepository;
 
+    /**
+     * This API is used to save SimCard
+     * @param simCardRequest
+     * @return SimCardDTO
+     */
     @Override
     public SimCardDTO createSimCard(SimCardRequest simCardRequest) {
 
@@ -29,10 +34,10 @@ public class SimCardServiceImpl implements ISimCardService {
         try {
 
             SimCard simCard = SimCardMapper.toSimCard(simCardRequest);
-
             simCard.setCreatedBy(simCardRequest.getLoginUserName());
-
             simCard = simCardRepository.save(simCard);
+
+            logger.info("SimCard Added.");
 
             simCardDTO = SimCardMapper.toSimCardDTO(simCard);
 

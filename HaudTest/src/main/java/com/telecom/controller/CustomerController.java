@@ -29,15 +29,11 @@ public class CustomerController extends ExternalBaseController {
     @Autowired
     private ICustomerService customerService;
 
-
-    @RequestMapping(value="/healthCheck")
-    public String healthCheck()
-    {
-        logger.info("Customer Controller");
-
-        return "Customer Controller Response";
-    }
-
+    /**
+     * This API is used to Create Customer
+     * @param customerRequest
+     * @return CustomerResponse Object
+     */
     @PostMapping
     public ResponseEntity createCustomer(@Valid @RequestBody CustomerRequest customerRequest) {
 
@@ -63,6 +59,12 @@ public class CustomerController extends ExternalBaseController {
         }
     }
 
+    /**
+     * This API is use to link Simcard with Customer
+     * @param customerId
+     * @param updateCustomerRequest
+     * @return CustomerResponse Object
+     */
     @PutMapping(value ="update/{customerid}")
     public ResponseEntity linkSimCardToCustomer(@PathVariable("customerid") long customerId, @Valid @RequestBody UpdateCustomerRequest updateCustomerRequest) {
 
@@ -90,6 +92,11 @@ public class CustomerController extends ExternalBaseController {
         }
     }
 
+    /**
+     * This API is used to Get Customer Info
+     * @param customerId
+     * @return CustomerResponse Object
+     */
     @GetMapping("/{customerid}")
     public ResponseEntity getCustomerInfo(@PathVariable("customerid") long customerId) {
 
