@@ -1,6 +1,10 @@
-API Document Request and Response is in below folder 
 
-API-DOCS
+**API-DOCS**
+
+ - Swagger URL : http://localhost:8080/telecom/swagger-ui.html
+ 
+ - If found any issue with Swagger then you can check API-DOCS Folder for API format.
+ 
 
 **Technology Used**
  - SpringBoot 
