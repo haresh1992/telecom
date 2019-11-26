@@ -1,13 +1,16 @@
 package com.java.test;
 
-import com.telecom.request.SimCardRequest;
-import com.telecom.response.SimCardResponse;
+import com.telecom.request.CustomerRequest;
+import com.telecom.request.UpdateCustomerRequest;
+import com.telecom.response.CustomerResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
@@ -21,7 +24,7 @@ public class CustomerControllerTests extends AbstractTest {
 		super.setUp();
 	}
 
-	/*@Test
+	@Test
 	public void createCustomer() throws Exception {
 
 		System.out.println("******************************** TEST CASES ********************************");
@@ -31,9 +34,9 @@ public class CustomerControllerTests extends AbstractTest {
 		String uri = "/customer";
 
 		CustomerRequest customerRequest = new CustomerRequest();
-		customerRequest.setName("Name101");
-		customerRequest.setEmailId("name101@gmail.com");
-		customerRequest.setLoginUserName("LoginU5");
+		customerRequest.setName("Name102");
+		customerRequest.setEmailId("name102@gmail.com");
+		customerRequest.setLoginUserName("LoginU1");
 
 		String inputJson = super.mapToJson(customerRequest);
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
@@ -49,9 +52,9 @@ public class CustomerControllerTests extends AbstractTest {
 
 		CustomerResponse customerResponse = super.mapFromJson(content, CustomerResponse.class);
 		assertTrue(Objects.nonNull(customerResponse));
-	}*/
+	}
 
-	/*@Test
+	@Test
 	public void linkSimCardToCustomer() throws Exception {
 
 		System.out.println("******************************** TEST CASES ********************************");
@@ -85,9 +88,9 @@ public class CustomerControllerTests extends AbstractTest {
 
 		CustomerResponse customerResponse = super.mapFromJson(content, CustomerResponse.class);
 		assertTrue(Objects.nonNull(customerResponse));
-	}*/
+	}
 
-	/*@Test
+	@Test
 	public void getCustomerInfo() throws Exception {
 
 		System.out.println("******************************** TEST CASES ********************************");
@@ -107,7 +110,7 @@ public class CustomerControllerTests extends AbstractTest {
 
 		CustomerResponse customerResponse = super.mapFromJson(content, CustomerResponse.class);
 		assertTrue(Objects.nonNull(customerResponse));
-	}*/
+	}
 
 }
 
